@@ -24,7 +24,8 @@ current_payment = st.number_input("Current Monthly Payment", value=878.60)
 if st.button("🔍 Compare Mortgages"):
     # === Calculations ===
     loan_amount = house_price - down_payment
-    total_payments = 30 * 12
+    loan_term_years = st.selectbox("Loan Term (Years)", options=[15, 20, 30], index=2)
+    total_payments = loan_term_years * 12
     monthly_interest = interest_rate / 12
     monthly_tax = property_tax / 12
 
