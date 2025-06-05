@@ -81,7 +81,7 @@ if st.button("🔍 Compare Mortgages"):
         st.write(f"Current Total Payments: ${current_total:,.2f}")
         st.write(f"New Total Payments: ${new_total:,.2f}")
         st.write(f"Difference: ${diff:,.2f}")
-        st.write(f"Down Payment Value if Invested @8%: ${invested_value:,.2f}")
+        st.write(f"Down Payment (${down_payment:,.2f}) Value if Invested @8%: ${invested_value:,.2f}")
         st.divider()
 
 
