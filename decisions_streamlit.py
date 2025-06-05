@@ -44,24 +44,7 @@ if st.button("🔍 Compare Mortgages"):
     monthly_income_post_tax = monthly_income_pre_tax * 0.70
     payment_ratio = true_monthly_payment / monthly_income_post_tax
 
-    # === Time Horizon Comparison ===
-    horizons = {"1 Year": 12, "3 Years": 36, "5 Years": 60, "20 Years": 240}
-    st.subheader("📊 Payment Comparisons")
-
-    for label, months in horizons.items():
-        current_total = min(months, remaining_payments) * current_payment
-        new_total = months * true_monthly_payment
-        diff = new_total - current_total
-        invested_value = future_value(down_payment, 0.08, months / 12)
-
-        st.markdown(f"**{label}**")
-        st.write(f"Current Total Payments: ${current_total:,.2f}")
-        st.write(f"New Total Payments: ${new_total:,.2f}")
-        st.write(f"Difference: ${diff:,.2f}")
-        st.write(f"Down Payment Value if Invested @8%: ${invested_value:,.2f}")
-        st.divider()
-
-    # === Summary
+        # === Summary
     st.subheader("📌 Summary")
     st.write(f"Loan Amount: ${loan_amount:,.2f}")
     st.write(f"Monthly Mortgage Payment (P&I): ${monthly_payment:,.2f}")
@@ -83,7 +66,23 @@ if st.button("🔍 Compare Mortgages"):
         f"<h4>Affordability Ratio: <span style='color:{color}'>{ratio_percent:.2f}%</span></h4>",
         unsafe_allow_html=True
     )
+    
+    # === Time Horizon Comparison ===
+    horizons = {"1 Year": 12, "3 Years": 36, "5 Years": 60, "20 Years": 240}
+    st.subheader("📊 Payment Comparisons")
 
+    for label, months in horizons.items():
+        current_total = min(months, remaining_payments) * current_payment
+        new_total = months * true_monthly_payment
+        diff = new_total - current_total
+        invested_value = future_value(down_payment, 0.08, months / 12)
+
+        st.markdown(f"**{label}**")
+        st.write(f"Current Total Payments: ${current_total:,.2f}")
+        st.write(f"New Total Payments: ${new_total:,.2f}")
+        st.write(f"Difference: ${diff:,.2f}")
+        st.write(f"Down Payment Value if Invested @8%: ${invested_value:,.2f}")
+        st.divider()
 
 
 
