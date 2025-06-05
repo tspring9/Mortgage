@@ -68,5 +68,21 @@ if st.button("🔍 Compare Mortgages"):
     st.write(f"**True Monthly Payment (All-in): ${true_monthly_payment:,.2f}**")
     st.write(f"Total Loan Cost (Excl. Taxes): ${total_payment_sum:,.2f}")
     st.write(f"Monthly Post-Tax Income: ${monthly_income_post_tax:,.2f}")
-    st.write(f"Affordability Ratio: **{payment_ratio:.2%}**")
+    # === Color-coded Affordability Ratio ===
+    ratio_percent = payment_ratio * 100
+
+    if ratio_percent >= 25:
+        color = "red"
+    elif ratio_percent >= 20:
+        color = "orange"
+    else:
+        color = "green"
+
+    st.markdown(
+        f"<h4>Affordability Ratio: <span style='color:{color}'>{ratio_percent:.2f}%</span></h4>",
+        unsafe_allow_html=True
+    )
+
+
+
 
