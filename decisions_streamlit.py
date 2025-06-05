@@ -13,6 +13,7 @@ st.header("📋 New Mortgage Info")
 house_price = st.number_input("House Price", value=600000.0)
 down_payment = st.number_input("Down Payment", value=100000.0)
 interest_rate = st.number_input("Annual Interest Rate (e.g. 0.07 = 7%)", value=0.07)
+loan_term_years = st.selectbox("Loan Term (Years)", options=[15, 20, 30], index=2)
 property_tax = st.number_input("Annual Property Tax", value=8420.0)
 income = st.number_input("Household Income (Annual)", value=228287.21)
 
@@ -24,7 +25,6 @@ current_payment = st.number_input("Current Monthly Payment", value=878.60)
 if st.button("🔍 Compare Mortgages"):
     # === Calculations ===
     loan_amount = house_price - down_payment
-    loan_term_years = st.selectbox("Loan Term (Years)", options=[15, 20, 30], index=2)
     total_payments = loan_term_years * 12
     monthly_interest = interest_rate / 12
     monthly_tax = property_tax / 12
